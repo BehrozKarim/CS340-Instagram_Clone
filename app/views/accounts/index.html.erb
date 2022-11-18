@@ -1,6 +1,9 @@
 <%= link_to 'Log Out', destroy_account_session_path, method: :delete %></br></br>
+<%= link_to 'Create Post', new_post_path%></br></br>
+
 <%= "#{@posts.size.to_s} active posts found. " %>
 <% @posts.each do |post| %>
+    <%= post.account.username %>
     <%= image_tag post.image.url, class: "img img-fluid"%>
 <% end %>
 
