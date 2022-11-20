@@ -3,7 +3,9 @@
 
 <%= "#{@posts.size.to_s} active posts found. " %>
 <% @posts.each do |post| %>
-    <%= post.account.username %>
+    <%# <%if post.account.username?%> %>
+    <%# <div><%=post.account.username %></div> %>
+    <%# <%end%> %>
     <%= image_tag post.image.url, class: "img img-fluid"%>
 <% end %>
 
