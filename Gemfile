@@ -45,6 +45,7 @@ gem 'turbolinks', '~> 5'
 gem 'carrierwave',  "0.10.0"
 gem 'fog', '~> 1.37.0'
 
+# Image Resizing
 gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb

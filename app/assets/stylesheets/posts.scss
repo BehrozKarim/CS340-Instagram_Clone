@@ -8,4 +8,16 @@
     padding: 10px;
     font-weight: bold;
     border: 1px solid #ddd;
+
+    img{
+        margin-right: 10px;
+    }
+}
+
+.post-details{
+    background: #fff;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: 0;
 }
