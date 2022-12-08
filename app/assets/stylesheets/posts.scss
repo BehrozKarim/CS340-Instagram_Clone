@@ -21,3 +21,20 @@
     border: 1px solid #ddd;
     border-top: 0;
 }
+
+.post_actions{
+    margin-bottom: 20px;
+    i {
+        margin-right: 10px;
+        color: #ddd;
+        cursor: pointer;
+    }
+
+    i:hover{
+        color: #000;
+    }
+    
+    i.active{
+        color: #555;
+    }
+}

@@ -9,7 +9,14 @@
                     </div>
                 </div>
             <%= image_tag post.image.url, class: "img img-fluid" %>
+             
+
             <div class="post-details">
+                <div class="post-actions">
+                    <span class="btn btn-success like-<%= post.id %> > post-like">Like</span>
+                    <span class="btn btn-success post-comment">Comment</span>
+                </div>
+
                 <p><strong><%= post.total_likes %> Likes </strong></p>
                 <p><strong><%= link_to post.account.username,  profile_path(post.account.username), class: "text-black" %> </strong></p>
                 
@@ -28,7 +35,7 @@
                 <p><%= current_account.full_name %></p>
             </div>
             <div class = "follower-suggestions">
-                <p class = "text-muted"> People You May Know  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+                <p class = "text-muted"> <strong> People You May Know  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong>
                 <%= link_to "View All", "#", class: "text-black" %> </p>
             </div>
         </div>

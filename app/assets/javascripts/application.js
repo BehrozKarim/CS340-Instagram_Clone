@@ -13,6 +13,8 @@
 //= require scripts
 //= require rails-ujs
 //= require activestorage
+//= require_tree .
+//= require fontawesome.min
 
 
 //= require_tree .
