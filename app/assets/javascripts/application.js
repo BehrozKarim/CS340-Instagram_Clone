@@ -9,10 +9,12 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require jquery
 //= require scripts
 //= require rails-ujs
 //= require activestorage
+//= require_tree .
+//= require fontawesome.min
 
 
 //= require_tree .
