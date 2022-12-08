@@ -1,0 +1,7 @@
+<% @follower_suggestions.each do |account|%>
+    <div class="recommended-follower">
+        <%= link_to profile_picture(account), profile_path(account.username) %>
+        <%= link_to account.username,  profile_path(account.username), class: "text-black"%>
+        <p><%= account.created_at < 1.days.ago ? "New to Instagram": "Followed by X users"%></p>
+    </div>
+<%end%>
