@@ -16,11 +16,11 @@ class Account < ApplicationRecord
 
   def total_followers
     # self.followers.count
-    0
+    Follower.where(follower_id: self.id).count
   end
 
   def total_following
     # self.following.count
-    0
+    Follower.where(following_id: self.id).count
   end
 end

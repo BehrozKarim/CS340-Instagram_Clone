@@ -5,7 +5,11 @@ class AccountsController < ApplicationController
     def index
         # user feed
         @posts = Post.active
-        @follower_suggestions = Account.where.not(id: current_account.id).limit(5)
+
+        following_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
+
+        following_ids << current_account.id
+        @follower_suggestions = Account.where.not(id: following_ids).limit(5)
     end
 
     def profile
@@ -14,8 +18,14 @@ class AccountsController < ApplicationController
     end
 
     def follow_account
-        account_id = params[:follow_id]
-        Follower.create(follower: current_account.id, following: follower_id)
+        follower_id = params[:follow_id]
+        if Follower.create!(follower_id: current_account.id, following_id: follower_id)
+            flash[:success] = "You are now following this account"
+        else
+            flash[:danger] = "Unable to follow this account"
+        end
+
+        redirect_to dashboard_path
 
     end
 
