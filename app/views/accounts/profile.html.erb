@@ -1,16 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <%= image_tag @account.image.url, width: "200px", class: "img-circle profile-pic"%>
+            <%= profile_picture @account, 200%>
         </div>
         <div class="col-8 text-left">
             <h1><%= @account.full_name%> </h1>
-            <%= link_to "Edit Profile", edit_account_registration_path, class: "btn btn-secondary"%>   
-            <div class="profile-stats"><p><%= @account.posts.count%> Posts</p></div>      
-            <div class="profile-stats"><p><%= @account.total_followers%> Followers</p></div>      
-            <div class="profile-stats"><p><%= @account.total_following%> Following</p></div>    
-
-            <p> <%= %> </p>
+            <%= link_to "Edit Profile", edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id)%>   
+            
+            <div class="row">
+                <div class="col-4">
+                    <%= @account.posts.count%> Posts
+                </div>      
+                <div class="col-4">
+                    <%= @account.total_followers%> Followers
+                </div>      
+                <div class="col-4">
+                    <%= @account.total_following%> Following
+                </div>    
+            </div>
+            
+            <%# <p> <%= @account.full_name %> <%#</p> %>
             <p> <%= @account.description %> </p>  
             <p> <%= link_to @account.website if @account.website.present?%></p>  
         </div>

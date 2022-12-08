@@ -17,8 +17,8 @@
                     <span class="btn btn-success post-comment">Comment</span>
                 </div>
 
-                <p><strong><%= post.total_likes_count %> Likes </strong></p>
-                <p><strong><%= link_to post.account.username,  profile_path(post.account.username), class: "text-black" %> </strong></p>
+                <p><strong id="post-<% post.id%>-likes"><%= post.total_likes_count %> Likes </strong></p>
+                <p><strong id="post-<% post.id%>-comments"><%= link_to post.account.username,  profile_path(post.account.username), class: "text-black" %> </strong></p>
                 
                 <%= simple_format post.description%>
 
@@ -37,6 +37,7 @@
             <div class = "follower-suggestions">
                 <p class = "text-muted"> <strong> People You May Know  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong>
                 <%= link_to "View All", "#", class: "text-black" %> </p>
+                <%= render "accounts/follower_suggestions" %>
             </div>
         </div>
     </div>
