@@ -17,7 +17,7 @@
                     <span class="btn btn-success post-comment">Comment</span>
                 </div>
 
-                <p><strong><%= post.total_likes %> Likes </strong></p>
+                <p><strong><%= post.total_likes_count %> Likes </strong></p>
                 <p><strong><%= link_to post.account.username,  profile_path(post.account.username), class: "text-black" %> </strong></p>
                 
                 <%= simple_format post.description%>
