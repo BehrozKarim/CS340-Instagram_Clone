@@ -13,7 +13,7 @@
 
             <div class="post-details">
                 <div class="post-actions">
-                    <span class="btn btn-success like-<%= post.id %> > post-like">Like</span>
+                    <span class="btn btn-success like-<%= post.id %> <% 'active' if post_liked_by_user?(post.id)  %> post-like" data-id="<% post.id %>">Like</span>
                     <span class="btn btn-success post-comment">Comment</span>
                 </div>
 
