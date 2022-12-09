@@ -9,7 +9,11 @@ class AccountsController < ApplicationController
         followers_ids << current_account.id
         following_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
 
-        @posts = Post.where(account_id: followers_ids).active.order(created_at: :desc)
+        if current_account.admin?
+            @posts = Post.active.order(created_at: :desc)
+        else
+            @posts = Post.where(account_id: followers_ids).active.order(created_at: :desc)
+        end
         @comment = Comment.new
 
         following_ids << current_account.id
