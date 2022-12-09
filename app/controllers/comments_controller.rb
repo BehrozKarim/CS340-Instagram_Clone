@@ -13,6 +13,15 @@ class CommentsController < ApplicationController
         end
     end
 
+    def destroy
+        # return_url = post_path(@comment.post.id)
+        
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        # redirect_to return_url, flash: { success: "Comment deleted successfully" }
+        redirect_to dashboard_path, flash: { success: "Comment created successfully" }
+    end
+
     private
 
     def comment_params

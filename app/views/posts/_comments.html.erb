@@ -1,6 +1,11 @@
 <% post.comments.each do |comment|%>
     <%= link_to profile_picture(comment.account, 25), profile_path(comment.account.username)%>
     <strong><%= link_to comment.account.username, profile_path(comment.account.username)%></strong>
+    <% if current_account == comment.account %>
+        <%= form_tag(comment_path(comment), method: :delete) do %>
+        <%= submit_tag "Delete Comment" %>
+        <% end %>
+    <%end%>
     <%= comment.comment%><br/>
     <p class = "text-muted" > <%= time_ago_in_words comment.created_at%> ago </p>
 <%end%>

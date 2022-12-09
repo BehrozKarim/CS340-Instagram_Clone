@@ -13,8 +13,13 @@ class Post < ApplicationRecord
     #    0 
     # end
 
+    def destroy
+        self.delete
+    end
+
     private
     def set_active
         self.active = true
     end
+
 end

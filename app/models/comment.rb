@@ -7,4 +7,8 @@ class Comment < ApplicationRecord
     validates_presence_of :account_id
 
     attr_accessor :return_to
+
+    def destroy
+        self.delete
+    end
 end

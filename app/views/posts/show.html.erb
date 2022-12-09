@@ -16,6 +16,11 @@
                     <%= link_to post_path( @post.id) do%>
                         <span class="btn btn-success post-comment">Comment</span>
                     <% end %>
+                    <% if current_account == @post.account %>
+                        <%= form_tag(post_path(@post), method: :delete) do %>
+                            <%= submit_tag "Delete Post" %>
+                        <% end %>
+                    <% end %>
                 </div>
 
                 <p><strong id="post-<%  @post.id%>-likes"><%=  @post.total_likes_count %> Likes </strong></p>
