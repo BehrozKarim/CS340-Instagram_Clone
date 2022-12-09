@@ -1,0 +1,4 @@
+<% post.comments.each do |comment|%>
+    <strong><%= comment.account.username%></strong>
+    <%= comment.comment%><br/>
+<%end%>

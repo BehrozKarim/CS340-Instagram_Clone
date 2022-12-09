@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :authenticate_account!
     
     def create
-        @comment = Comment.new(post_params)
+        @comment = Comment.new(comment_params)
         @comment.account_id = current_account.id if account_signed_in?
         
         if @comment.save
@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
 
     private
 
-    def post_params
-        params.require(:post).permit(:comment, :post_id)
+    def comment_params
+        params.require(:comment).permit(:comment, :post_id)
     end
     
 end

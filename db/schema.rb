@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2022_12_08_232134) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "posts_id"
-    t.bigint "accounts_id"
+    t.bigint "post_id"
+    t.bigint "account_id"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accounts_id"], name: "index_comments_on_accounts_id"
-    t.index ["posts_id"], name: "index_comments_on_posts_id"
+    t.index ["account_id"], name: "index_comments_on_account_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -79,6 +79,6 @@ ActiveRecord::Schema.define(version: 2022_12_08_232134) do
     t.index ["account_id"], name: "index_posts_on_account_id"
   end
 
-  add_foreign_key "comments", "accounts", column: "accounts_id"
-  add_foreign_key "comments", "posts", column: "posts_id"
+  add_foreign_key "comments", "accounts"
+  add_foreign_key "comments", "posts"
 end
