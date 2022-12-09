@@ -14,7 +14,9 @@
             <div class="post-details">
                 <div class="post-actions">
                     <span class="btn btn-success like-<%= post.id %> <% 'active' if post_liked_by_user?(post.id)  %> post-like" data-id="<% post.id %>">Like</span>
-                    <span class="btn btn-success post-comment">Comment</span>
+                    <%= link_to post_path(post.id) do%>
+                        <span class="btn btn-success post-comment">Comment</span>
+                    <% end %>
                 </div>
 
                 <p><strong id="post-<% post.id%>-likes"><%= post.total_likes_count %> Likes </strong></p>
@@ -23,6 +25,19 @@
                 <%= simple_format post.description%>
 
                 <p class="text-muted"> <%= time_ago_in_words post.created_at%> ago</p>
+
+                <%= render "posts/comments", post: post%>
+            </div>
+            <div class="comment-box">
+                <%= form_for @comment do |f|%>
+                    <%= f.hidden_field :post_id, value: post.id %>
+                    <div class="input-group">
+                        <%= f.text_field :comment, placeholder: "Add comment here...", class: "form-control post-comment"%>
+                        <div class="input-group-append">
+                            <%= f.submit "Comment", class: "btn btn-success float-right" %>
+                        </div>
+                    </div>
+                <% end %>
             </div>
             <% end %>
         </div>
