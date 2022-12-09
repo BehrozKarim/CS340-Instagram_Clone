@@ -4,7 +4,9 @@
             <% @posts.each do |post| %> 
                 <div class = "insta-post">    
                     <div class="post-meta">
-                        <%= link_to image_tag(post.account.image.thumb.url, class: "img-circle"), profile_path(post.account.username) %>
+                        <% if post.account.image.thumb.url%>
+                            <%= link_to image_tag(post.account.image.thumb.url, class: "img-circle"), profile_path(post.account.username) %>
+                        <%end%>
                         <%= link_to post.account.username,  profile_path(post.account.username), class: "text-black"%>
                     </div>
                 </div>
@@ -17,9 +19,16 @@
                     <%= link_to post_path(post.id) do%>
                         <span class="btn btn-success post-comment">Comment</span>
                     <% end %>
+                    <% if current_account == post.account or current_account.admin? %>
+                        <%= form_tag(post_path(post), method: :delete) do %>
+                            <%= submit_tag "Delete Post" %>
+                        <% end %>
+                        <%= button_to 'Edit Post', edit_post_path(post), method: :get %>
+                    <% end %>
                 </div>
 
                 <p><strong id="post-<% post.id%>-likes"><%= post.total_likes_count %> Likes </strong></p>
+                
                 <p><strong id="post-<% post.id%>-comments"><%= link_to post.account.username,  profile_path(post.account.username), class: "text-black" %> </strong></p>
                 
                 <%= simple_format post.description%>

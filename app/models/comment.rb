@@ -5,4 +5,10 @@ class Comment < ApplicationRecord
     validates_presence_of :comment
     validates_presence_of :post_id
     validates_presence_of :account_id
+
+    attr_accessor :return_to
+
+    def destroy
+        self.delete
+    end
 end

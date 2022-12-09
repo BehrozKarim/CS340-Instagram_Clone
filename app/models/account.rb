@@ -10,9 +10,19 @@ class Account < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  enum role: [:admin, :member]
+
+  # Set the default role for an account to 'member'
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :member
+  end
+  
   def full_name
     "#{first_name} #{last_name}"
   end
+
 
   def total_followers
     # self.followers.count
