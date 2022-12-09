@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_account!
     before_action :set_post, only: [:show]
+    before_action :find_post, only: [:edit, :update, :destroy]
     def new
         @post = Post.new
     end
@@ -22,6 +23,15 @@ class PostsController < ApplicationController
         @comment = Comment.new
     end
 
+    def update
+        # @post = Post.find(params[:id])
+        @post.update(post_params)
+        redirect_to post_path(@post)
+    end
+
+    def edit
+    end
+
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
@@ -33,6 +43,13 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id]) if params[:id].present?
+    end
+
+    def find_post
+        @post = Post.find_by id: params[:id]
+        return if @post
+        flash[:danger] = "Post does not exist"
+        redirect_to dashboard_path
     end
 
     def post_params
