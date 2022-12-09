@@ -1,7 +1,7 @@
 <% post.comments.each do |comment|%>
     <%= link_to profile_picture(comment.account, 25), profile_path(comment.account.username)%>
     <strong><%= link_to comment.account.username, profile_path(comment.account.username)%></strong>
-    <% if current_account == comment.account %>
+    <% if current_account == comment.account || current_account.admin?%>
         <%= form_tag(comment_path(comment), method: :delete) do %>
         <%= submit_tag "Delete Comment" %>
         <% end %>
